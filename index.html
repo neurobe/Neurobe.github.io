@@ -24,7 +24,7 @@
         var encoder = new TextEncoder();
         var data = encoder.encode(string);
         console.log(data.length);
-        device.transferOut(device.configuration.interfaces[0].alternate.endpoints[0].endpointNumber, data)
+        device.transferOut(device.configuration.interfaces[0].alternate.endpoints[0].0, data)
         .catch(error => { console.warn(error); })
     }
 
