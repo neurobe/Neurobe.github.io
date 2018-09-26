@@ -46,10 +46,7 @@
     }
 
     navigator.usb.getDevices({
-        filters: [{
-                vendorId: 0x0403,
-                productId: 0xE958
-            }]
+        filters: []
     })
     .then(devices => {
         if (devices.length > 0) {
