@@ -53,6 +53,7 @@
     .then(devices => {
         if (devices.length > 0) {
             device = devices[0];
+            console.log("here");
             return setup(device);
         }
     })
