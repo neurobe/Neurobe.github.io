@@ -17,7 +17,7 @@ function myFunction() {
     document.getElementById("demo").innerHTML = "Paragraph changed.";
 }
     
-device = await navigator.usb.requestDevice({ 'filters': [] });
+device = await navigator.usb.requestDevice({ 'filters': [{vendorId: 0x0403}] });
 console.log(device);
 
 await device.open();
