@@ -17,18 +17,7 @@ function myFunction() {
     document.getElementById("demo").innerHTML = "Paragraph changed.";
 }
     
-device = await navigator.usb.requestDevice({ 'filters': [{vendorId: 0x0403}] });
-console.log(device);
 
-await device.open();
-if (device.configuration === null) {
-    await device.selectConfiguration(1);
-}
-await device.claimInterface(0);
-await device.selectAlternateInterface(0, 0);
-await device.controlTransferOut({ /* WHAT DO I PUT HERE?? */ });
-let result = await device.transferIn(1, 64);
-console.log((new TextDecoder).decode(result.data)); 
     
 </script>
     
