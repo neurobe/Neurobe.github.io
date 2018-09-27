@@ -9,7 +9,14 @@
     <P>Type text into box and click on submit button 00    
 
   
- <script> 
+ <script>
+     
+function toHexString(byteArray) {
+  return byteArray.reduce((output, elem) => 
+    (output + ('0' + elem.toString(16)).slice(-2)),
+    '');
+}  
+     
 function go() {
     var device;
     var result;
@@ -32,8 +39,8 @@ navigator.usb.requestDevice({ filters: [{ vendorId: 0x0403, productId: 0xE958 }]
 .then(result => {
   //let decoder = new TextDecoder();
   //console.log('Received: ' + decoder.decode(result.data));
-    for (i=0; i<16; i++ )
-    console.log('Received: ' + result.data.getInt8(i));
+
+    console.log('Received: ' + toHexString(result.data);
 })
 .catch(error => { console.log(error); });
 }
