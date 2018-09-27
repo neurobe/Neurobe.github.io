@@ -20,7 +20,7 @@ function go() {
 }
 
 while (g == true) {
-console.log('go');
+    console.log('go');
 navigator.usb.requestDevice({ filters: [{ vendorId: 0x403 }] })
 .then(selectedDevice => {
    device = selectedDevice;
