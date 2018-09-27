@@ -44,8 +44,8 @@ navigator.usb.requestDevice({ filters: [{ vendorId: 0x0403, productId: 0xE958 }]
   //var array = new Int8Array(64);
   view   = new Int8Array(result.data)
   for (i = 0; i < 64; i++) {
-    //a = result.data.getInt8[i];
-    console.log(view[i].toString(16));
+    a = result.data.getInt8(i));
+    console.log(a.toString(16));
   }
 
   //console.log('Received: ' + decoder.decode(result.data));
