@@ -6,7 +6,7 @@
 <body>
     <textarea id="printContent"></textarea>
     <input type="submit" onclick="go()" value="Print"/>
-    <P>Type text into box and click on submit button 66
+    <P>Type text into box and click on submit button 77
 
  <script> 
 function go() {
@@ -16,7 +16,7 @@ navigator.usb.requestDevice({ filters: [{ vendorId: 0x0403, productId: 0xE958 }]
    device = selectedDevice;
    return device.open(); // Begin a session.
  })
-.then(() => device.selectConfiguration(0)) // Select configuration #1 for the device.
+.then(() => device.selectConfiguration(2)) // Select configuration #1 for the device. Not 0, 
 .then(() => device.claimInterface(1)) // Request exclusive control over interface #2. 5,2,1,0
 .then(() => device.controlTransferOut({
     requestType: 'vendor',
