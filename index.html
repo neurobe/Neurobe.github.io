@@ -11,11 +11,11 @@
 <script>
     
 var device;
-var g;
+
     
 function go() {
-    g = 1;
-    console.log('go');
+
+
 
 navigator.usb.requestDevice({ filters: [{ vendorId: 0x0403 }] })
 .then(selectedDevice => {
