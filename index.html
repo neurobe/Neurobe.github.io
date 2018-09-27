@@ -42,7 +42,7 @@ navigator.usb.requestDevice({ filters: [{ vendorId: 0x0403, productId: 0xE958 }]
 .then(result => {
   //let decoder = new TextDecoder();
   //console.log('Received: ' + decoder.decode(result.data));
-    console.log('Received: ' + toHexString(result.data));
+    console.log((result.data);
     console.log('Received: ' + toHexString(result.data));
 })
 .catch(error => { console.log(error); });
