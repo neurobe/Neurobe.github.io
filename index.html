@@ -42,9 +42,11 @@ navigator.usb.requestDevice({ filters: [{ vendorId: 0x0403, productId: 0xE958 }]
 .then(result => {
   let decoder = new TextDecoder("utf-8");
   var array = new Uint8Array(64);
-  for (i = 0; i < 64; i++)
-      array[i] = result.data.getInt8[i];
-      console.log(array[i])
+  for (i = 0; i < 64; i++) {
+    array[i] = result.data.getInt8[i];
+    console.log(array[i]);
+  }
+
   //console.log('Received: ' + decoder.decode(result.data));
 
     console.log(result.data);
