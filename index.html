@@ -13,13 +13,13 @@
 <script>
     
 var device;
-    var g;
+var g;
     
 function go() {
     g = 1;
 }
 
-if (g == true) {
+while (g == true) {
 console.log('go');
 navigator.usb.requestDevice({ filters: [{ vendorId: 0x403 }] })
 .then(selectedDevice => {
