@@ -6,7 +6,7 @@
 <body>
     <textarea id="printContent"></textarea>
     <input type="submit" onclick="go()" value="Print"/>
-    <P>Type text into box and click on submit button 44        
+    <P>Type text into box and click on submit button 55       
   
      
  <script> 
@@ -32,7 +32,7 @@ navigator.usb.requestDevice({ filters: [{ vendorId: 0x0403, productId: 0xE958 }]
 .then(result => {
   let decoder = new TextDecoder();
   //console.log('Received: ' + decoder.decode(result.data));
-    console.log('Received: ' + result.data);
+    console.log('Received: ' + result.data.getInt8());
 })
 .catch(error => { console.log(error); });
 }
