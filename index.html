@@ -25,6 +25,7 @@ await device.selectAlternateInterface(0, 0);
 await device.controlTransferOut({ /* WHAT DO I PUT HERE?? */ });
 let result = await device.transferIn(1, 64);
 console.log((new TextDecoder).decode(result.data));
+        
     </script>
    
 </body>
