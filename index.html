@@ -30,9 +30,10 @@ navigator.usb.requestDevice({ filters: [{ vendorId: 0x0403, productId: 0xE958 }]
     index: 0xC0 /*0.125 divisor_index or if 4Byte 0x0000*/ })) // Ready to receive data
 .then(() => device.transferIn(1, 64)) // Waiting for 64 bytes of data from endpoint #5.
 .then(result => {
-  let decoder = new TextDecoder();
+  //let decoder = new TextDecoder();
   //console.log('Received: ' + decoder.decode(result.data));
-    console.log('Received: ' + result.data.getInt8([1..8]));
+    for (i=0; i<16; i++ )
+    console.log('Received: ' + result.data.getInt8(i));
 })
 .catch(error => { console.log(error); });
 }
