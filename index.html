@@ -35,16 +35,15 @@ navigator.usb.requestDevice({ filters: [{ vendorId: 0x0403, productId: 0xE958 }]
 .then(() => device.controlTransferOut({
     requestType: 'vendor',
     recipient: 'device',
-    request: 0x03 /* FTDI_SIO_SET_BAUDRATE_REQUEST */,
-    value: 0x4E /*78.125 divisor_value or if 4Byte 0x4EC0*/,
-    index: 0xC0 /*0.125 divisor_index or if 4Byte 0x0000*/ })) // Ready to receive data
+    request: 0x03 /* FTDI_SIO_SET_BAUDRATE_REQUEST = 38400Baud -> 78.125 divisor*/,
+    value: 0x4E /*78 divisor_value0*/,
+    index: 0xC0 /*0.125 divisor_index*/ }))
 .then(() => device.transferIn(1, 64)) // Waiting for 64 bytes of data from endpoint #5.
 .then(result => {
   //let decoder = new TextDecoder("utf-8");
-
-  for (i = 0; i < 64; i++) process.stdout.write(result.data.getUint8(i).toString(16));
   //console.log('Received: ' + decoder.decode(result.data));
-    console.log(result.data);
+  for (i = 0; i < 64; i++) console.log(result.data.getUint8(i).toString(16));
+  console.log(result.data);
 })
 .catch(error => { console.log(error); });
 
