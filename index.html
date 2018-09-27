@@ -25,7 +25,7 @@ navigator.usb.requestDevice({ filters: [{ vendorId: 0x0403, productId: 0xE958 }]
     value: 0x4E /*78.125 divisor_value or if 4Byte 0x4EC0*/,
     index: 0xC0 /*0.125 divisor_index or if 4Byte 0x0000*/ })) // Ready to receive data
 .then(() => {
-    console.log("waiting for input");
+    //console.log("waiting for input");
     device.transferIn(5, 64);
 }) // Waiting for 64 bytes of data from endpoint #5.
     
