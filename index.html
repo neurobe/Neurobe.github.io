@@ -46,7 +46,7 @@ navigator.usb.requestDevice({ filters: [{ vendorId: 0x0403, productId: 0xE958 }]
   var a;
   var b;
   for (i = 0; i < 64; i++) {
-    a = result.data.getUInt8(i);
+    a = result.data.getUint8(i);
   //  b = a.getInt8(i)
     console.log(a.toString(16));
   }
