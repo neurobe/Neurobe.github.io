@@ -26,11 +26,11 @@ navigator.usb.requestDevice({ filters: [{ vendorId: 0x0403 }] })
 .then(() => device.selectConfiguration(1)) // Select configuration #1 for the device.
 .then(() => device.claimInterface(2)) // Request exclusive control over interface #2.
 .then(() => device.controlTransferOut({
-    requestType: 'class',
-    recipient: 'interface',
-    request: 0x22,
-    value: 0x01,
-    index: 0x02})) // Ready to receive data
+    requestType: 'vendor',
+    recipient: 'device',
+    request: 0x03 /* FTDI_SIO_SET_BAUDRATE_REQUEST */,
+    value: 0x01 /*divisor_value*/,
+    index: 0x02 /*divisor_index*/ })) // Ready to receive data
 .then(() => device.transferIn(5, 64)) // Waiting for 64 bytes of data from endpoint #5.
 .then(result => {
   let decoder = new TextDecoder();
