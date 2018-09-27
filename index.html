@@ -13,7 +13,8 @@
         
         
     <script>
-   device = await navigator.usb.requestDevice({ 'filters': [] });
+        
+device = await navigator.usb.requestDevice({ 'filters': [] });
 console.log(device);
 
 await device.open();
@@ -22,7 +23,11 @@ if (device.configuration === null) {
 }
 await device.claimInterface(0);
 await device.selectAlternateInterface(0, 0);
-await device.controlTransferOut({ /* WHAT DO I PUT HERE?? */ });
+await device.controlTransferOut({ requestType: 'vendor',
+                            recipient: 'device',
+                            request: 3 /* FTDI_SIO_SET_BAUDRATE_REQUEST */, 
+                            value:  7 /*divisor_value*/,
+                            index: 0  /*divisor_index */ });
 let result = await device.transferIn(1, 64);
 console.log((new TextDecoder).decode(result.data));
         
