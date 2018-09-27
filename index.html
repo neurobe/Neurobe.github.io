@@ -12,28 +12,13 @@
         
         
 <script>
-let device;       
-try {
-    device = await navigator.usb.requestDevice({ filters: [{}]});
-} catch (err) {
-    // No device was selected.
-    console.log('Error:', err);
-}
-console.log(device);
-
-await device.open();
-if (device.configuration === null) {
-    await device.selectConfiguration(1);
-}
-await device.claimInterface(0);
-await device.selectAlternateInterface(0, 0);
-await device.controlTransferOut({ requestType: 'vendor',
-                            recipient: 'device',
-                            request: 3 /* FTDI_SIO_SET_BAUDRATE_REQUEST */, 
-                            value:  7 /*divisor_value*/,
-                            index: 0  /*divisor_index */ });
-let result = await device.transferIn(1, 64);
-console.log((new TextDecoder).decode(result.data));
+    
+navigator.usb.requestDevice({ filters: [{ vendorId: 0x0403 }] })
+.then(device => {
+  console.log(device.productName);      // "Arduino Micro"
+  console.log(device.manufacturerName); // "Arduino LLC"
+})
+.catch(error => { console.log(error); });
         
     </script>
    
