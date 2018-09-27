@@ -12,8 +12,13 @@
         
         
 <script>
-        
-device = navigator.usb.requestDevice({ 'filters': [] });
+let device;       
+try {
+    device = await navigator.usb.requestDevice({ filters: [{}]});
+} catch (err) {
+    // No device was selected.
+    console.log('Error:', err);
+}
 console.log(device);
 
 await device.open();
