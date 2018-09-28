@@ -30,7 +30,7 @@ navigator.usb.requestDevice({ filters: [{ vendorId: 0x0403, productId: 0xE958 }]
    return device.open(); // Begin a session.
  })
 .then(() => device.selectConfiguration(1)) // Select configuration #1 for the device. Yes #1 {0,2,3}=not supported
-.then(() => device.claimInterface(1)) // Request exclusive control over interface #2. 0=alternate,{1,2,3,4,5,6}=not supported,
+.then(() => device.claimInterface(0)) // Request exclusive control over interface #2. 0=alternate,{1,2,3,4,5,6}=not supported,
 .then(() => device.selectAlternateInterface(0, 0)) // see SO 48889874
 .then(() => device.controlTransferOut({
     requestType: 'vendor',
